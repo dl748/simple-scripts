@@ -140,7 +140,7 @@ test:mobile
 
 This does not create build or test in the context of the main script.
 
-Next we register a new build script. The reason for this, is that common, is a dependency for all the other projects (common library). So it needs to be built first. So we do a run on build:common, then async everyone else.
+Next we register a new build script. The reason for this, is that common, is a dependency for all the other projects (common library). So it needs to be built first. So we do a run on build:common, then async everyone else. Note: Only asking for scripts exactly one level deep, or one directory. Do not want any past that, nor the ones being defined.
 
 Next is adding the addPassthroughScripts. Because we preregistered build, it does not create a passthrough script for it, however it does create a 'test' script that passthroughs all the test onto the other. Now this could be the same as the build if tests require the common library to be built as well.
 
