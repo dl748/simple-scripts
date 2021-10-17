@@ -1,0 +1,6 @@
+/src
+/node_modules
+/tests
+/simple-scripts*.tgz
+/tsconfig.*json
+/eslintrc.json

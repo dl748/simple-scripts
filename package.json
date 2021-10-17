@@ -1,0 +1,40 @@
+{
+  "author": "dl748",
+  "bin": {
+    "simplescripts": "bin/simplescripts.mjs"
+  },
+  "bugs": {
+    "url": "https://github.com/dl748/simple-scripts/issues"
+  },
+  "dependencies": {
+    "interpret": "^2.2.0"
+  },
+  "description": "Multitier Scripting System",
+  "devDependencies": {
+    "@types/chai": "^4.2.22",
+    "@types/interpret": "1.1.1",
+    "@types/mocha": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "chai": "^4.3.4",
+    "eslint": "^8.0.0",
+    "eslint-plugin-jsonc": "^1.7.0",
+    "mocha": "^9.1.2",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  },
+  "homepage": "https://github.com/dl748/simple-scripts#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "@dl748/simple-scripts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dl748/simple-scripts.git"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "lint": "npx eslint --no-error-on-unmatched-pattern --config=./eslintrc.json .",
+    "test": "npm run build && npx mocha -r tests/setup.js \"tests/**/*.test.ts\""
+  },
+  "version": "0.0.1"
+}
