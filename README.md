@@ -52,7 +52,7 @@ script.ts Sample
 ```typescript
 import type { ISimpleScripts } from '@dl748/simplescripts';
 
-export default async(scripts: ISimpleScripts) => {
+export default async(scripts: ISimpleScripts): Promise<void> => {
 
 };
 ```
@@ -161,7 +161,7 @@ This function is normally called AFTER importSubdirections, it creates action sc
 #### scriptDefinitions - optional
 Contains a list of defintions to apply to the script if created, its an object with a key of action, and value of description/arguments similar to the register function
 
-```json
+```javascript
 {
   build: {
     description: 'this is the main build script',
@@ -236,13 +236,13 @@ path?: string - context path override for function
 
 ### runShell(cmd, args, options?)
 
-#### cmd - required
+* cmd - required
 Command to run
 
-#### args - required
+* args - required
 Arguments to pass to the command
 
-#### options - optional
+* options - optional
 cwd? - string - set the current working directory of the command, default is the same directory as the script file
 
 asNPX - boolean - default false - runs command as npx, all it does is translated cmd, args into 'npx', [ cmd, ...args ]
