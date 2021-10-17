@@ -7,7 +7,6 @@ import type {
   IPassthroughOptions,
   IScriptDefinition,
   IShellExecutionOptions,
-  ISimpleScriptsOptions,
   ScriptsCallback,
 } from './types';
 import {

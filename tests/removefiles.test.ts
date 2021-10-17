@@ -1,12 +1,11 @@
+import * as path from 'path';
 import {
   mkdir,
   writeFile,
 } from 'fs/promises';
-import { runScripts } from '../src/runscripts';
 import { createContext } from '../src/context';
-import { removeFiles } from '../src/removefiles';
 import { getFileType } from '../src/utils';
-import * as path from 'path';
+import { removeFiles } from '../src/removefiles';
 
 describe('register/run', () => {
   it('basic', async() => {
@@ -22,7 +21,7 @@ describe('register/run', () => {
     } catch {
       // ignore error
     }
-    await (async() => {
+    await (async(): Promise<void> => {
       await removeFiles(context, [ '12345' ]);
     })();
     expect(await getFileType('12345')).to.equal(undefined);

@@ -1,6 +1,6 @@
-import { runScripts } from '../src/runscripts';
-import { createContext } from '../src/context';
 import { addPassthroughScripts } from '../src/passthrough';
+import { createContext } from '../src/context';
+import { runScripts } from '../src/runscripts';
 
 describe('passthrough', () => {
   it('basic', async() => {
@@ -17,16 +17,18 @@ describe('passthrough', () => {
           actions: {
             build: {
               arguments: {
-                'subtest': 'subthis'
+                'subtest': 'subthis',
               },
-              callback: async(): Promise<void> => { values.called = true; },
+              callback: async(): Promise<void> => {
+                values.called = true;
+              },
               description: 'sub build',
             },
           },
           subscripts: {
           },
-        }
-      }
+        },
+      },
     };
     await addPassthroughScripts(context, {
       'build': {

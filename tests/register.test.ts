@@ -1,6 +1,6 @@
-import { runScripts } from '../src/runscripts';
 import { createContext } from '../src/context';
 import { register } from '../src/register';
+import { runScripts } from '../src/runscripts';
 
 describe('register/run', () => {
   it('basic', async() => {

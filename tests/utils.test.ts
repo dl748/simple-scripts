@@ -1,7 +1,5 @@
-import * as utils from '../src/utils';
 import * as path from 'path';
-
-console.log(modPath);
+import * as utils from '../src/utils';
 
 describe('getNormalizedPath', () => {
   it('basic', async() => {
@@ -25,7 +23,7 @@ describe('pathToArray', () => {
 
 describe('getStack', () => {
   it('basic', async() => {
-    const stack = (() => utils.getStack())();
+    const stack = ((): NodeJS.CallSite[] => utils.getStack())();
     expect(stack).to.have.lengthOf(10);
     const lastPath = path.dirname(stack[0]?.getFileName() ?? '');
     expect(lastPath).to.equal(__dirname);
@@ -34,7 +32,7 @@ describe('getStack', () => {
 
 describe('getCaller', () => {
   it('basic', async() => {
-    const lastPath = (() => (() => utils.getCaller())())();
+    const lastPath = ((): NodeJS.CallSite => ((): NodeJS.CallSite => utils.getCaller())())();
     expect(lastPath.getFileName).to.not.equal(undefined);
     expect(path.dirname(lastPath.getFileName() ?? '')).to.equal(__dirname);
   });
@@ -42,7 +40,7 @@ describe('getCaller', () => {
 
 describe('getCallerPath', () => {
   it('basic', async() => {
-    const lastPath = (() => (() => utils.getCallerPath())())();
+    const lastPath = ((): string => ((): string => utils.getCallerPath())())();
     expect(lastPath).to.equal(__dirname);
   });
 });
@@ -58,11 +56,11 @@ describe('normalizeArguments', () => {
   it('basic', async() => {
     const args = [ 'myscript:test', '--where=when', '--what=who'];
     expect(utils.normalizeArguments(args)).to.deep.equal({
-      script: 'myscript:test',
       arguments: {
-        where: 'when',
         what: 'who',
+        where: 'when',
       },
+      script: 'myscript:test',
     });
   });
 });
@@ -86,7 +84,7 @@ describe('wordWrap', () => {
       'erat faucibus ante, nec fermentum libero tortor a',
       'tellus. Fusce pharetra tincidunt euismod.',
       'Curabitur ipsum nibh, blandit vel pretium nec,',
-      'mollis et orci.'
+      'mollis et orci.',
     ]);
   });
 });
