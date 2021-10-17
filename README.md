@@ -244,9 +244,9 @@ Arguments to pass to the command
 
 * options - optional
 
-** cwd? - string - set the current working directory of the command, default is the same directory as the script file
+* * cwd? - string - set the current working directory of the command, default is the same directory as the script file
 
-** asNPX - boolean - default false - runs command as npx, all it does is translated cmd, args into 'npx', [ cmd, ...args ]
+* * asNPX - boolean - default false - runs command as npx, all it does is translated cmd, args into 'npx', [ cmd, ...args ]
 
 ### runShellOutput(cmd, args, options?)
 See runShell for argument definitions, the only difference is that this function returns a string from the promise, that way you can get the output, useful for pulling in generated data, (e.g. 'npx', [ 'serverless', 'print', '--json' ], allows you to dynamically pull in the translated serverless json file to use or write out somewhere.)
