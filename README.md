@@ -158,8 +158,7 @@ Scripts object that is passed into script files contain the following functions.
 ### addPassthroughScripts(scriptDefinitions?, options?)
 This function is normally called AFTER importSubdirections, it creates action scripts for anything one level deep that hasn't been defined as and runs them for this level. For example, if you have a frontend and backend that have a build action, it'll will create a script at this level that will run both of those scripts when run.
 
-#### scriptDefinitions - optional
-Contains a list of defintions to apply to the script if created, its an object with a key of action, and value of description/arguments similar to the register function
+* scriptDefinitions - optional - Contains a list of defintions to apply to the script if created, its an object with a key of action, and value of description/arguments similar to the register function
 
 ```javascript
 {
@@ -172,67 +171,50 @@ Contains a list of defintions to apply to the script if created, its an object w
 }
 ```
 
-#### options
-synchronous? - boolean default false, by default all scripts will run asynchronous
+* options
+    * synchronous? - boolean default false, by default all scripts will run asynchronous
 
 ### getScripts(action, options?) -> string[]
 This function will get a list of all the scripts at the current level and up. All functions are returned in the context of the script file running them. Returns a promised string array.
 
-#### action - required
-The action to search for
-
-#### options - optional
-maxDepth? - number - default is undefined - how far deep you want to get scripts for
-
-minDepth? - number - default is 0
-
-path? - string - override path to search from
+* action - required - The action to search for
+* options - optional
+    * maxDepth? - number - default is undefined - how far deep you want to get scripts for
+    * minDepth? - number - default is 0
+    * path? - string - override path to search from
 
 ### import(directory)
-
 Imports a single directory (looks for script.* files and attempts to load them using interpret's loader db)
 
-#### directory - required
+* directory - required
 
 ### importSubdirectory(path?)
-
 Attempts to import all subdirectories from the context of the scripts files location, that contains a script.* file
 
-#### path - optional
-Override the path used to search for subdirectories
+* path - optional - Override the path used to search for subdirectories
 
 ### register(action, callback, options?)
 Registers a new action and the callback to run when action is called
 
-#### action - required
-Name of action to perform (e.g. build, lint, test)
-
-#### callback - required
-Asynchronous function to perform, can return a promise (typescript Promise<void>) if needed.
-
-#### options - optional
-arguments? - object of string/string, contains descriptions of options for the script
-
-description? - string, description to display for the action
-
-path? - string, context path override for the registration
+* action - required - Name of action to perform (e.g. build, lint, test)
+* callback - required - Asynchronous function to perform, can return a promise (typescript Promise<void>) if needed.
+* options - optional
+    * arguments? - object of string/string, contains descriptions of options for the script
+    * description? - string, description to display for the action
+    * path? - string, context path override for the registration
 
 ### removeFiles(path)
 Recursively removes files and directories - this is useful for scripts that do "cleaning" or allow the system to remove generated files into a clean state. The files are deleted from the context of the script file.
 
-#### path - required - string or array of string
-list of files or directories to remove
+* path - required - string or array of string - list of files or directories to remove
 
 ### run(scripts, options?)
 Will run one or multiple scripts
 
-#### scripts - required - string or array of string
-List of scripts to run (e.g. 'clean' or [ 'build:frontend', 'build:backend' ])
-
-#### options - optional
-synchronous? - boolean - scripts are executed synchronously or not, default is false
-
-path?: string - context path override for function
+* scripts - required - string or array of string - List of scripts to run (e.g. 'clean' or [ 'build:frontend', 'build:backend' ])
+* options - optional
+    * synchronous? - boolean - scripts are executed synchronously or not, default is false
+    * path?: string - context path override for function
 
 ### runShell(cmd, args, options?)
 
