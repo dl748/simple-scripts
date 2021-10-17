@@ -36,5 +36,5 @@
     "lint": "npx eslint --no-error-on-unmatched-pattern --config=./eslintrc.json .",
     "test": "npm run build && npx mocha -r tests/setup.js \"tests/**/*.test.ts\""
   },
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
