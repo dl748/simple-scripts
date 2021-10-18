@@ -64,7 +64,6 @@ export const SimpleScripts = async(opts?: ISimpleScriptsOptions): Promise<ISimpl
       const err = e as Record<string, string>;
       if( typeof(err.message) !== undefined ) {
         console.error(`[${context.colors.fgRed('ERROR')}: ${err.message}]`);
-        console.log(err.stack);
       }
     } else {
       console.error(`[${context.colors.fgRed('ERROR')}: ${e}]`);
