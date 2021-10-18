@@ -52,7 +52,7 @@ module.exports = async(scripts) => {
 
 script.ts Sample
 ```typescript
-import type { ISimpleScripts } from '@dl748/simplescripts';
+import type { ISimpleScripts } from '@dl748/simple-scripts';
 
 export default async(scripts: ISimpleScripts): Promise<void> => {
 
@@ -146,8 +146,8 @@ Next we register a new build script. The reason for this, is that common, is a d
 
 Next is adding the addPassthroughScripts. Because we preregistered build, it does not create a passthrough script for it, however it does create a 'test' script that passthroughs all the test onto the other. Now this could be the same as the build if tests require the common library to be built as well.
 
-build -> build:common, [ build:frontend, build:backend, build:mobile ]
-test -> [ test:common, test:frontend, test:backend, test:mobile ]
+* build -> build:common, [ build:frontend, build:backend, build:mobile ]
+* test -> [ test:common, test:frontend, test:backend, test:mobile ]
 
 The simplescripts command utilizes the context directory it is run in.
 
