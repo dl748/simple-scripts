@@ -156,14 +156,14 @@ Running `npx simplescripts build:common` is the same as `cd common; npx simplesc
 If you have a subproject that is a part of the npm install, e.g. common/shared for utilities shared by all projects `"common/shared": "file:common/shared"`, in your root projects directory. This will have a package.json in the common/shared directory and will confuse the `npx` command.  If you wish to run commands from a subdirectory with a package.json, you should add the original node_modules executable to your PATH variable.
 
 From the root projects directory
-*nix
+* *nix
 ```
 export PATH="$PATH:$(pwd)/node_modules/.bin"
 ```
 
-windows
+* windows
 ```
-set PATH=%PATH;%CD%\node_modules\.bin
+set PATH=%PATH%;%CD%\node_modules\.bin
 ```
 
 ## API Reference
