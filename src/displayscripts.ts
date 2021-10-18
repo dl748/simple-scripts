@@ -73,7 +73,7 @@ export const displayScripts = (context: IContext, myconsole: { log: (...values: 
       for(const arg of Object.keys(daction?.arguments ?? {}).sort()) {
         const argText = wordWrap(daction?.arguments?.[arg] ?? '', 11+sizes.argument);
         const aFirstLine = argText.shift() ?? '';
-        myconsole.log(`      --${context.colors.fgMagenta(arg.padEnd(sizes.argument))} - ${aFirstLine}`);
+        myconsole.log(`      ${context.colors.fgMagenta(`--${arg.padEnd(sizes.argument)}`)} - ${aFirstLine}`);
         for(const line of argText) {
           myconsole.log(`${''.padEnd(11+sizes.argument)}${line}`);
         }
