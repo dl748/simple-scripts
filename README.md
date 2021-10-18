@@ -33,7 +33,7 @@ alias ss="npx simplescripts"
 
 windows cmd.exe
 ```
-doskey ss=npx simplscripts $*
+doskey ss=npx simplescripts $*
 ```
 
 ## Configuration
@@ -42,7 +42,7 @@ System utilizes one or more script files, with the base in whatever directory is
 
 ```javascript
 module.exports = async(scripts) => {
-  scripts.register('action', async() => {
+  await scripts.register('action', async() => {
     // do action here
   });
 }
