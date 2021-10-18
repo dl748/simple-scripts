@@ -153,6 +153,19 @@ The simplescripts command utilizes the context directory it is run in.
 
 Running `npx simplescripts build:common` is the same as `cd common; npx simplescripts build`. This allows developers that may be working on a single project to change to that directory and only run commands for that project.
 
+If you have a subproject that is a part of the npm install, e.g. common/shared for utilities shared by all projects `"common/shared": "file:common/shared"`, in your root projects directory. This will have a package.json in the common/shared directory and will confuse the `npx` command.  If you wish to run commands from a subdirectory with a package.json, you should add the original node_modules executable to your PATH variable.
+
+From the root projects directory
+*nix
+```
+export PATH="$PATH:$(pwd)/node_modules/.bin"
+```
+
+windows
+```
+set PATH=%PATH;%CD%\node_modules\.bin
+```
+
 ## API Reference
 
 Scripts object that is passed into script files contain the following functions. All functions return a Promise that must be resolved, and will not return a value unless specified, mostly used to pass on or handle errors
