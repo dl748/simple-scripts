@@ -232,6 +232,7 @@ Will run one or multiple scripts
     * path?: string - context path override for function
 
 ### runShell(cmd, args, options?)
+Runs a script using the shell (specifically child_process.spawn). Output is redirected to the current stdout, throws an exception if the process exits with a non zero error code.
 
 * cmd - required
 Command to run
@@ -244,7 +245,7 @@ Arguments to pass to the command
     * asNPX - boolean - default false - runs command as npx, all it does is translated cmd, args into 'npx', [ cmd, ...args ]
 
 ### runShellOutput(cmd, args, options?)
-See runShell for argument definitions, the only difference is that this function returns a string from the promise, that way you can get the output, useful for pulling in generated data, (e.g. 'npx', [ 'serverless', 'print', '--json' ], allows you to dynamically pull in the translated serverless json file to use or write out somewhere.)
+See runShell for argument definitions, the only difference is that this function returns a string from the promise, that way you can get the output, useful for pulling in generated data, (e.g. 'npx', [ 'serverless', 'print', '--json' ], allows you to dynamically pull in the translated serverless json file to use or write out somewhere.). Currently does not pull in stderr, stderr is passed through.
 
 ## Documentation for running in internal tools
 
