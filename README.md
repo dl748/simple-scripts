@@ -245,3 +245,47 @@ Arguments to pass to the command
 
 ### runShellOutput(cmd, args, options?)
 See runShell for argument definitions, the only difference is that this function returns a string from the promise, that way you can get the output, useful for pulling in generated data, (e.g. 'npx', [ 'serverless', 'print', '--json' ], allows you to dynamically pull in the translated serverless json file to use or write out somewhere.)
+
+## Documentation for running in internal tools
+
+Example
+
+```javascript
+import { SimpleScripts } from '@dl748/simple-scripts';
+
+(async() => {
+  await SimpleScripts({
+    cli: true,
+    cliArguments: [ 'build', '--mode=development' ]),
+  });
+})();
+
+// Or
+
+SimpleScripts({
+  cli: true,
+  cliArguments: [ 'build', '--mode=development' ]),
+}).then(() => {
+  // completed
+}).catch((e) => {
+  // errored
+})
+
+```
+
+Note: if you have scripts that do watching, or as a webserver, it may never returned from this function.
+
+### Options
+
+* cli - boolean - run as a cli - this processes arguments from the command line or override, default is false
+* cliArguments - Array of string - represents the command line arguments to process, default is process.argv.slice(2)
+* color - string - auto/always/never - default is auto, but an invalid value is never
+    * auto - determines if stdout is a tty/terminal, and will send colors if determined so
+    * always - always send colors even if not using a terminal (e.g. piping to less or more)
+    * never - never use colors
+* cwd - string - set the current working directory when calling the script (location it looks for initial script.* file), default is process.cwd()
+* quiet - boolean - send output to stdout - default is false
+* script - script to run, required if cli is false, it is the script to run
+* scriptArguments - object of string/booleans - these are the arguments sent to the script and every subscript
+* scriptBaseName - string - overrides the base name of the script file (e.g. 'myUberScript' will look for  myUberScript.* files instead of scripts.* files) default is 'scripts'
+* synchronous - boolean - provides the default to utilized when running multiple subscripts, default is false so it will execute asynchronously
