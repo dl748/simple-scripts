@@ -234,11 +234,11 @@ Will run one or multiple scripts
 ### runShell(cmd, args, options?)
 Runs a script using the shell (specifically child_process.spawn). Output is redirected to the current stdout, throws an exception if the process exits with a non zero error code.
 
-* cmd - required
+* cmd - required - string
 Command to run
 
-* args - required
-Arguments to pass to the command
+* args - required - array of string
+Arguments to pass to the command. The reason for the array instead of a single string is so that its easier to double quote parameters and make them safe to pass through to the shell. Double quotes are used because they are supported by both *nix and windows, where single quotes are only supported by *nix.
 
 * options - optional
     * cwd? - string - set the current working directory of the command, default is the same directory as the script file
