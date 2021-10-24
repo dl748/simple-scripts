@@ -93,7 +93,7 @@ export const normalizeArguments = (args: string[]): { arguments: ScriptArguments
 const extensionsImported: Record<string, boolean> = {};
 
 export const loadHandler = async(ext: string): Promise<void> => {
-  if( !extensionsImported[ext] ) {
+  if( !extensionsImported[ext] && !require.extensions[ext]) {
     const extOptions = extensions[ext];
     if( extOptions === undefined ) {
       throw new Error(`Unsupported extension ${ext}`);
@@ -121,7 +121,7 @@ export const loadHandler = async(ext: string): Promise<void> => {
     }
     extensionsImported[ext] = true;
   }
-  if( !extensionsImported[ext] ) {
+  if( !extensionsImported[ext] && !require.extensions[ext]) {
     throw new Error(`Unable to load ${ext}`);
   }
 };

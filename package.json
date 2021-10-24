@@ -34,7 +34,7 @@
   "scripts": {
     "build": "npx tsc",
     "lint": "npx eslint --no-error-on-unmatched-pattern --config=./eslintrc.json .",
-    "test": "npm run build && npx mocha -r tests/setup.js \"tests/**/*.test.ts\""
+    "test": "npm run build && npx mocha -r tests/setup.cjs \"tests/**/*.test.ts\""
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }

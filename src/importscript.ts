@@ -41,6 +41,7 @@ const internalImportScript = async(context: IContext, path: string): Promise<voi
           ...context.scriptsArguments,
         }));
       }
+      break;
     }
   }
 };
@@ -73,7 +74,7 @@ export const importScript = (context: IContext, path: string/*, opts?: IImportOp
     }
   });
   const cPath = getNormalizedPath(context.contextPath, pathDirname(path));
-  return path===context.contextPath?prom:addPromise(context, prom, pathToArray(cPath), `import ${fullPath}`);
+  return cPath.match(/^\.\.(?:\/|$)/)?prom:addPromise(context, prom, pathToArray(cPath), `import ${fullPath}`);
 };
 
 export const importSubdirectories = (context: IContext, path?: string): Promise<void> => {
