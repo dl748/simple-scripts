@@ -28,7 +28,7 @@
     "simple", "scripts", "simplescripts", "simple-scripts",
     "multiproject", "build", "tool", "make",
     "cleam", "system", "multilevel", "synchronous",
-    "asynchronous"
+    "asynchronous", "async", "task", "action"
   ],
   "license": "MIT",
   "main": "dist/index.js",
