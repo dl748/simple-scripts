@@ -25,10 +25,22 @@
   },
   "homepage": "https://github.com/dl748/simple-scripts#readme",
   "keywords": [
-    "simple", "scripts", "simplescripts", "simple-scripts",
-    "multiproject", "build", "tool", "make",
-    "cleam", "system", "multilevel", "synchronous",
-    "asynchronous", "async", "task", "action"
+    "simple",
+    "scripts",
+    "simplescripts",
+    "simple-scripts",
+    "multiproject",
+    "build",
+    "tool",
+    "make",
+    "cleam",
+    "system",
+    "multilevel",
+    "synchronous",
+    "asynchronous",
+    "async",
+    "task",
+    "action"
   ],
   "license": "MIT",
   "main": "dist/index.js",
@@ -42,5 +54,5 @@
     "lint": "npx eslint --no-error-on-unmatched-pattern --config=./eslintrc.json .",
     "test": "npm run build && npx mocha -r tests/setup.cjs \"tests/**/*.test.ts\""
   },
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
