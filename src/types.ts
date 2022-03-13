@@ -35,6 +35,7 @@ export interface IExecutionOptions {
 export interface IShellExecutionOptions {
   asNPX?: boolean;
   cwd?: string;
+  environment?: Record<string, string | null>;
 }
 
 export interface IPassthroughOptions {

@@ -242,6 +242,7 @@ Arguments to pass to the command. The reason for the array instead of a single s
 
 * options - optional
     * cwd? - string - set the current working directory of the command, default is the same directory as the script file
+    * enviroment?: Record<string, string | null> - Allows you to set Environment variables to calling program, call will pass in all process environments as well, and anything you specify will override these. So if you want to NOT send a environment variable, use a value of null.
     * asNPX - boolean - default false - runs command as npx, all it does is translated cmd, args into 'npx', [ cmd, ...args ]
 
 ### runShellOutput(cmd, args, options?)

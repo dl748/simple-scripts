@@ -20,6 +20,26 @@ const escapeQuotes = (v: string): string => {
   return `"${v.replace(/(\x27|\x22|\x5C)/g, (v: string) => `\\${v}`)}"`;
 };
 
+const getEnvironment = (environment: Record<string, string | null>): Record<string, string> => {
+  const processEnv = process && typeof(process.env) === 'object'?process.env:{};
+  const result = {
+    ...(Object.entries(processEnv).reduce((a: Record<string, string>, [name, value]: [string, string | undefined]) => {
+      if( value !== undefined ) {
+        a[name] = value;
+      }
+      return a;
+    }, {})),
+  };
+  for(const [name, value] of Object.entries(environment)) {
+    if( value === null ) {
+      delete result[name];
+    } else {
+      result[name] = value;
+    }
+  }
+  return result;
+};
+
 export const runShell = (context: IContext, cmd: string, args: Array<string | undefined>, opts?: IShellExecutionOptions): Promise<void> => {
   const options = opts ?? {};
   const asNPX = options.asNPX ?? false;
@@ -43,6 +63,7 @@ export const runShell = (context: IContext, cmd: string, args: Array<string | un
         return a;
       }, []), {
         cwd,
+        env: getEnvironment(opts?.environment ?? {}),
         shell: true,
         stdio: 'inherit',
       });
@@ -91,6 +112,7 @@ export const runShellOutput = (context: IContext, cmd: string, args: Array<strin
         return a;
       }, []), {
         cwd,
+        env: getEnvironment(opts?.environment ?? {}),
         shell: true,
         stdio: [ 'inherit', 'pipe', 'inherit' ],
       });
